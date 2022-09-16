@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import LeaderBoard from './LeaderBoard';
 import Odds from './Odds';
+import Footer from './Footer';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Footer />
     </React.Fragment>
   );
 }
