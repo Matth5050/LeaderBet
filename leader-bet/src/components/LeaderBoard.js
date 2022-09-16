@@ -5,12 +5,12 @@ function LeaderBoard() {
     <React.Fragment>
       <div class="card">
         <div class="card-header">
-          Featured
+          Leader Board
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">Player 1</li>
+          <li class="list-group-item">Player 2</li>
+          <li class="list-group-item">Player 3</li>
         </ul>
       </div>
 
