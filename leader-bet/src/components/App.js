@@ -8,8 +8,16 @@ function App() {
   return (
     <React.Fragment>
       <Header/>
-      <LeaderBoard />
-      <Odds />
+      <div className='container'>
+        <div className='row mt-5'>
+          <div className='col-9'>
+            <Odds />
+          </div>
+          <div className='col-3'>
+            <LeaderBoard />
+          </div>
+        </div>
+      </div>
     </React.Fragment>
   );
 }
