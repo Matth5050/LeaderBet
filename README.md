@@ -7,5 +7,6 @@ Friday 9/16
 * 10:50: Read React docs
 * 11:10: Begin creating static homepage
 * 14:10: Decide on state management 
-* 14:30: adding basic styling to main page
-* 16:40: break dinner
+* 14:30: Adding basic styling to main page
+* 16:40: Break dinner
+* 22:30: Created login component
