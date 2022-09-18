@@ -10,3 +10,6 @@ Friday 9/16
 * 14:30: Adding basic styling to main page
 * 16:40: Break dinner
 * 22:30: Created login component
+
+Saturday 9/17
+* 20:00: worked on login and component
