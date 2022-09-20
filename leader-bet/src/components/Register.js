@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "./../firebase.js";
+import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
@@ -28,7 +29,6 @@ function Register() {
     } else {
       setSignUpSuccess("Your passwords are not the same!")
     }
-    
   };
 
   return (
@@ -68,7 +68,7 @@ function Register() {
               </form>
           </div>
         </div>
-        <p className="text-center mt-3">Already have an account? Login here!</p>
+        <p className="text-center mt-3">Already have an account? <Link to="/login">Login here</Link></p>
       </div>
     </React.Fragment>
   );
