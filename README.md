@@ -13,3 +13,12 @@ Friday 9/16
 
 Saturday 9/17
 * 20:00: worked on login and component
+
+Saturday 9/17
+* 22:00: Worked on register/login and updating header
+
+Sunday 9/18
+* 19:00: Coded
+
+Monday 9/19
+* 20:00 Added context hooks, updated header, MainPageControl, and Register/Login components
