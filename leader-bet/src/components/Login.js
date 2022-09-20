@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
 import { auth } from "./../firebase.js";
+import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { UserContext } from "./UserContext";
+
 
 function Login() {
 
@@ -8,10 +11,15 @@ function Login() {
     width: "18rem",
     marginTop: "250px"
   }
-
   
   const [signInSuccess, setSignInSuccess] = useState(null);
-  
+  const {isLogged, setIsLogged, userName, setUserName} = useContext(UserContext);
+
+  function checkAuth(name) {
+    setIsLogged(true);
+    setUserName(name)
+  }
+
   function doSignIn(event) {
     event.preventDefault();
     const email = event.target.signinEmail.value;
@@ -19,6 +27,7 @@ function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setSignInSuccess(`You've successfully signed in as ${userCredential.user.email}`)
+        checkAuth(userCredential.user.email);
       })
       .catch((error) => {
         setSignInSuccess(`There was an error signing in: ${error.message}!`)
@@ -27,8 +36,8 @@ function Login() {
 
   return (
     <React.Fragment>
-      <div>
       {signInSuccess}
+      <div>
         <div className="card text-center mx-auto p-3" style={cardWidth}>
           <div className="">
             <h3 className="mb-3 card-title">Login</h3>
@@ -56,7 +65,7 @@ function Login() {
               </form>
           </div>
         </div>
-        <p className="text-center mt-3">New to LeaderBet? Register an account here!</p>
+        <p className="text-center mt-3">New to LeaderBet? <Link to="/register">Register an account here!</Link></p>
       </div>
     </React.Fragment>
   );
