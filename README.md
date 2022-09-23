@@ -25,3 +25,4 @@ Monday 9/19
 
 Friday 9/23
 * 13:30 Researching API implementation
+* 15:20 Implemented API, working on displaying desired content
