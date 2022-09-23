@@ -8,15 +8,13 @@ import { UserContext } from './UserContext';
 
 function MainPageControl() {
 
-  const {isLogged, setIsLogged, userName, setUserName} = useContext(UserContext);
-
-  if (isLogged === false) {
+  if (auth.currentUser === null) {
     return (
       <React.Fragment>
         <h1>You must be signed in to access the queue.</h1>
       </React.Fragment>
     )
-  } else if (isLogged === true) {
+  } else if (auth.currentUser != null) {
   return (
     <React.Fragment>
       <div className="bg">
