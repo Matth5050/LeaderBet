@@ -22,3 +22,6 @@ Sunday 9/18
 
 Monday 9/19
 * 20:00 Added context hooks, updated header, MainPageControl, and Register/Login components
+
+Friday 9/23
+* 13:30 Researching API implementation
