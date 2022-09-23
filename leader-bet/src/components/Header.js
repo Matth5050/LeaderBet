@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext.js";
+import { auth } from "./../firebase.js";
 
 
 function Header() {
 
-  const {isLogged, setIsLogged, userName, setUserName} = useContext(UserContext);
+  const { userName, setUserName } = useContext(UserContext);
+  const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
+  const parseObject = JSON.parse(grabObject);
+  setUserName(parseObject.email);
 
-  if (isLogged === false) {
+  if (auth.currentUser === null) {
     return (
       <React.Fragment>
       <nav className="navbar bg-light">
@@ -21,7 +25,7 @@ function Header() {
       </nav>
     </React.Fragment>
     )
-  } else if (isLogged === true) {
+  } else if (auth.currentUser != null) {
     return (
       <React.Fragment>
         <nav className="navbar navbar-expand-lg bg-light">
