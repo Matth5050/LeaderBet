@@ -1,15 +1,39 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext.js";
 import { auth } from "./../firebase.js";
-
+import { signOut } from "firebase/auth";
 
 function Header() {
 
+  const [signOutSuccess, setSignOutSuccess] = useState(null);
   const { userName, setUserName } = useContext(UserContext);
   const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
   const parseObject = JSON.parse(grabObject);
+  console.log(parseObject);
   setUserName(parseObject.email);
+  // setUserName('test');
+
+
+// useEffect(() => {
+//   if (grabObject === null) {
+//     setUserName("test");
+//   } else {
+//     setUserName(parseObject);
+//   }
+// },[window.sessionStorage])
+
+// console.log(userName.email);
+
+  function doSignOut() {
+    signOut(auth)
+      .then(function() {
+        setSignOutSuccess("You have successfully signed out!");
+      }).catch(function(error) {
+        setSignOutSuccess(`There was an error signing out: ${error.message}!`);
+      });
+  }
+
 
   if (auth.currentUser === null) {
     return (
@@ -44,7 +68,7 @@ function Header() {
                   <ul className="dropdown-menu">
                     <li className="dropdown-item"><Link to="/">Profile</Link></li>
                     <li className="dropdown-item"><Link to="/login">Login</Link></li>
-                    <li><a className="dropdown-item" href="">Log-out</a></li>
+                    <li className="dropdown-item" onClick={doSignOut}><Link to="/login">Logout</Link></li>
                   </ul>
                 </li>
               </ul>
