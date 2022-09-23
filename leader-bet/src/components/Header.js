@@ -10,20 +10,22 @@ function Header() {
   const { userName, setUserName } = useContext(UserContext);
   const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
   const parseObject = JSON.parse(grabObject);
-  console.log(parseObject);
-  setUserName(parseObject.email);
-  // setUserName('test');
+  // const test = parseObject.email;
+  // console.log(parseObject.email);
+
+  // setUserName(test);
 
 
 // useEffect(() => {
 //   if (grabObject === null) {
 //     setUserName("test");
 //   } else {
-//     setUserName(parseObject);
+//     setUserName(parseObject.email);
+//     console.log("here");
 //   }
 // },[window.sessionStorage])
 
-// console.log(userName.email);
+// console.log(userName);
 
   function doSignOut() {
     signOut(auth)
@@ -68,7 +70,7 @@ function Header() {
                   <ul className="dropdown-menu">
                     <li className="dropdown-item"><Link to="/">Profile</Link></li>
                     <li className="dropdown-item"><Link to="/login">Login</Link></li>
-                    <li className="dropdown-item" onClick={doSignOut}><Link to="/login">Logout</Link></li>
+                    <li className="dropdown-item" onClick={() => doSignOut()}><Link to="/login">Logout</Link></li>
                   </ul>
                 </li>
               </ul>
