@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
-import { auth } from "./../firebase.js";
+import { auth } from "../firebase";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
-import { UserContext } from "./UserContext";
+
 
 
 function Login() {
@@ -13,12 +14,7 @@ function Login() {
   }
   
   const [signInSuccess, setSignInSuccess] = useState(null);
-  // const {isLogged, setIsLogged, userName, setUserName} = useContext(UserContext);
-
-  // function checkAuth(name) {
-  //   setIsLogged(true);
-  //   setUserName(name)
-  // }
+  
 
   function doSignIn(event) {
     event.preventDefault();
@@ -37,11 +33,12 @@ function Login() {
     .catch((error) => {
       setSignInSuccess(`There was an error signing in: ${error.message}!`);
     });
-})
+  })
 }
 
   return (
     <React.Fragment>
+      <Header />
       {signInSuccess}
       <div>
         <div className="card text-center mx-auto p-3" style={cardWidth}>
