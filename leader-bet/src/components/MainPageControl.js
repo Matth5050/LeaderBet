@@ -7,8 +7,8 @@ import Header from "./Header";
 
 
 
+
 function MainPageControl() {
-console.log(auth.currentUser);
 
   if (auth.currentUser === null) {
     return (
@@ -30,6 +30,9 @@ console.log(auth.currentUser);
             </div>
             <div className='col-3'>
               <LeaderBoard />
+            </div>
+            <div>
+              {/* <NFL /> */}
             </div>
           </div>
         </div> 
