@@ -20,14 +20,10 @@ const [userName, setUserName] = useState(null);
 const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
 const parseObject = JSON.parse(grabObject);
 
-console.log(parseObject);
-
 useEffect(() => {
   if (grabObject === null) {
-    setUserName("test");
   } else {
     setUserName(parseObject.email);
-    console.log("here");
   }
 },[window.sessionStorage])
 
