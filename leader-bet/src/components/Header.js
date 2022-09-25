@@ -10,23 +10,7 @@ function Header() {
   const { userName, setUserName } = useContext(UserContext);
   const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
   const parseObject = JSON.parse(grabObject);
-  // const test = parseObject.email;
-  // console.log(parseObject.email);
-
-  // setUserName(test);
-
-
-// useEffect(() => {
-//   if (grabObject === null) {
-//     setUserName("test");
-//   } else {
-//     setUserName(parseObject.email);
-//     console.log("here");
-//   }
-// },[window.sessionStorage])
-
-// console.log(userName);
-
+ 
   function doSignOut() {
     signOut(auth)
       .then(function() {

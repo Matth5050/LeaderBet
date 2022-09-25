@@ -9,8 +9,8 @@ function Footer() {
   }
   return (
     <React.Fragment>
-      <footer class="page-footer font-small blue" style={footerStyle}>
-        <div class="footer-copyright text-center py-3">© 2022 Copyright:
+      <footer className="page-footer font-small blue" style={footerStyle}>
+        <div className="footer-copyright text-center py-3">© 2022 Copyright:
           <a href="/">LeaderBet</a>
         </div>
       </footer>
