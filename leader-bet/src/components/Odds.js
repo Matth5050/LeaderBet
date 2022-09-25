@@ -5,36 +5,32 @@ function Odds() {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [listGames, setListGames] = useState(null);
-  const oddsArr = test;
-      
-  // const result = oddsArr.map((element, index) => {
-  //   if (element.bookmakers[0].markets[0].outcomes[0].point < 0) {
-  //     return <li key={index} className="list-group-item">
-  //         <div>{element.bookmakers[0].markets[0].outcomes[0].name + " " + element.bookmakers[0].markets[0].outcomes[0].point}</div> 
-  //         <div>{element.bookmakers[0].markets[0].outcomes[1].name + " " + element.bookmakers[0].markets[0].outcomes[1].point}</div>
-  //       </li>
-  //   } else {
-  //     return <li key={index} className="list-group-item">
-  //         <div>{element.bookmakers[0].markets[0].outcomes[1].name + " " + element.bookmakers[0].markets[0].outcomes[1].point}</div>
-  //         <div>{element.bookmakers[0].markets[0].outcomes[0].name + " " + element.bookmakers[0].markets[0].outcomes[0].point}</div> 
-  //       </li>
-  //   }
-  // });
-
+  const oddsArr = test; //dummy data
+  
   const result = oddsArr.map((element, index) => {
-    return element.bookmakers[0].markets[0].outcomes[0].point < 0 ? ( 
+    return element.bookmakers[0].markets[0].outcomes[0].point < 0 ? (
+      <div>
+        <div className="test1">
+          <span className="mx-3">{new Date(element.commence_time).toDateString()}</span><span>Spread</span><span></span>
+        </div>
         <li key={index} className="list-group-item">
           <div>{element.bookmakers[0].markets[0].outcomes[0].name + " " + element.bookmakers[0].markets[0].outcomes[0].point}</div> 
           <div>{element.bookmakers[0].markets[0].outcomes[1].name + " " + element.bookmakers[0].markets[0].outcomes[1].point}</div>
         </li>
-      ) : (
+      </div>
+      ):(
+      <div>
+        <div className="test1">
+            <span className="mx-3">{new Date(element.commence_time).toDateString()}</span>
+          </div>
         <li key={index} className="list-group-item">
           <div>{element.bookmakers[0].markets[0].outcomes[1].name + " " + element.bookmakers[0].markets[0].outcomes[1].point}</div>
           <div>{element.bookmakers[0].markets[0].outcomes[0].name + " " + element.bookmakers[0].markets[0].outcomes[0].point}</div> 
         </li>
+      </div>
   )})
   
+
 
   // useEffect(() => {
   //   fetch(`https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=${process.env.REACT_APP_API_KEY}&regions=us&markets=spreads&Format=american&bookmakers=draftkings`)
