@@ -30,7 +30,6 @@ useEffect(() => {
   return (
     <Router>
         <UserContext.Provider value={{isLogged, setIsLogged, userName, setUserName}}>
-          
           <Routes>
             <Route exact path="/" element={<PrivateRoute />} >
               <Route exact path="/" element={<MainPageControl />}/>
@@ -39,7 +38,7 @@ useEffect(() => {
             <Route path="/login" element={<Login />} />
           </Routes>
         </UserContext.Provider>
-        <Footer />
+        {/* <Footer /> */}
     </Router>
   );
 }
