@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { auth } from "./../firebase.js";
 import MainPageControl from './MainPageControl';
 import Header from './Header';
-import Footer from './Footer';
 import Login from './Login';
 import Register from './Register';
 import PrivateRoute from './PrivateRoute.js';
@@ -38,7 +37,7 @@ useEffect(() => {
             <Route path="/login" element={<Login />} />
           </Routes>
         </UserContext.Provider>
-        {/* <Footer /> */}
+        
     </Router>
   );
 }
