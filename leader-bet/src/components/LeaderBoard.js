@@ -21,7 +21,9 @@ function LeaderBoard() {
             id: doc.id
           });
         });
-        setMainAccountsList(accounts);
+        const valuesAsceSorted = Object.values(accounts).sort(function(a,b){return b.win - a.win}).slice(0,10);
+        console.log(valuesAsceSorted);
+        setMainAccountsList(valuesAsceSorted);
       },
       (error) => {
 
@@ -30,28 +32,31 @@ function LeaderBoard() {
     return () => unSubscribe();
   }, []);
 
-
-//
-
   return (
     <React.Fragment>
-      <div className="card">
-        <div className="card-header">
-          Leader Board
-        </div>
-        <ol start="1" className="firstItem">
-          {mainAccountsList.map(({userName}, i) => { 
-            if (i === 0) {
-              return (
-                <li className='secondItem px-0'>{userName}</li>)
-            } else
-            return (
-            <li className=''>{userName}</li>
-          )})}
-        </ol>
+    <div className="card">
+      <div className="card-header">
+        Leader Board
       </div>
+      <ol className="list-group list-group-flush">
+        {mainAccountsList.map(({userName, win}, i) => { 
+          if (i === 0) {
+            return (
+              <li className='list-group-item crowned leaderBoard leaderBoard d-flex justify-content-between align-items-start'>{userName}
+              <span class="badge bg-primary rounded-pill">{win}</span></li>)
+          } else
+          return (
+            <React.Fragment>
+          <li className='list-group-item leaderBoard d-flex justify-content-between align-items-start'><div>{userName}</div>
+          <span class="badge bg-primary rounded-pill">{win}</span></li>
+          
+          </React.Fragment>
+        )})}
+      </ol>
+    </div>
 
-    </React.Fragment>
+  </React.Fragment>
+
   );
 }
 
