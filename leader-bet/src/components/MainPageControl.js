@@ -31,9 +31,13 @@ function MainPageControl() {
                 <div className='col-9'>
                   <Odds />
                 </div>
-                <div className='col-3'>
-                  <LeaderBoard />
-                  <BetSlip /> 
+                <div className='col-3 d-flex flex-column test'>
+                  <div className="lBoard">
+                    <LeaderBoard />
+                  </div>
+                  <div className="betSlip mt-5 ">
+                    <BetSlip /> 
+                  </div>
                 </div>
               </div>
             </div>

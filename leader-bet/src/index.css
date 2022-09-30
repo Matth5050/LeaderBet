@@ -16,8 +16,17 @@ code {
     monospace;
 }
 
+/* .bg {
+  min-height:calc(100% - 70px);
+} */
+
 /* leaderboard */
- 
+
+/* .lBoard {
+  position: sticky;
+  top: 0;
+} */
+
 .leaderBoard.list-group {
   counter-reset: line-number;
 }
@@ -49,7 +58,6 @@ text-indent: 0;
 }
 
 /* end leaderboard code */
-
 
 
 
