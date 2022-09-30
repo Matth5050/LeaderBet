@@ -4,6 +4,8 @@ import LeaderBoard from "./LeaderBoard";
 import { Link } from "react-router-dom";
 import { auth } from './../firebase.js'
 import Header from "./Header";
+import Footer from "./Footer"
+import BetSlip from "./BetSlip"
 
 
 
@@ -16,6 +18,7 @@ function MainPageControl() {
         <Header />
         <h1>{auth.currentUser}</h1>
         <h1>You must be signed in to access the queue.</h1>
+        <Footer />
       </React.Fragment>
     )
   } else {
@@ -23,23 +26,22 @@ function MainPageControl() {
         <React.Fragment>
           <Header />
           <div className="bg">
-        <div className='container'>
-          <div className='row mt-5'>
-            <div className='col-9'>
-              <Odds />
-            </div>
-            <div className='col-3'>
-              <LeaderBoard />
-            </div>
-            <div>
+            <div className='container'>
+              <div className='row mt-5'>
+                <div className='col-9'>
+                  <Odds />
+                </div>
+                <div className='col-3'>
+                  <LeaderBoard />
+                  <BetSlip /> 
+                </div>
+              </div>
             </div>
           </div>
-        </div> 
-          </div>
+          <Footer />
       </React.Fragment>
       )
     }
-  // } else if (auth.currentUser != null) { 
 }
 
 export default MainPageControl;
