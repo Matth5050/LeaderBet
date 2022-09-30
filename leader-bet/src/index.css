@@ -15,21 +15,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
  
-.firstItem  {
-  background-image: url(crown-solid.svg);
-  background-size: 20px;
-  background-repeat: no-repeat;
-  background-position: 3% 1%;
-  
-} 
-
-.secondItem  {
-  list-style-type: none;
-} 
-
-.crown {
-  fill: gold;
+.leaderBoard.list-group {
+  counter-reset: line-number;
 }
+
+.leaderBoard.list-group-item {
+  counter-increment: line-number;
+  text-indent: 24px;
+}
+
+.leaderBoard.list-group-item:after {
+  content: counter(line-number)".";
+  text-indent: 0;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 0.5rem;
+  text-align: center;
+}
+
+.leaderBoard.list-group-item.crowned:after {
+  content: '';
+  background-image: url(crown-solid.svg);
+  background-repeat: no-repeat;
+  background-position: 10% -50%;
+}
+
+.badge {
+text-indent: 0;
+}
+
+
+
+
+
 
