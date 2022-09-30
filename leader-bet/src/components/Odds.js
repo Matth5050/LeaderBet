@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 function Odds() {
 
-  const listHeaderStyles = {
-    backgroundColor: "lightGray",
-    margin:0
-  }
+  // const listHeaderStyles = {
+  //   backgroundColor: "lightGray",
+  //   margin:0
+  // }
 
   const listItemStyles = {
-    padding:0,
+    // padding:0,
     
   }
 
@@ -22,25 +22,35 @@ function Odds() {
   
   const result = oddsArr.map((element, index) => {
     return element.bookmakers[0].markets[1].outcomes[0].point < 0 ? (
-      <div className="">
-        <div className="row container" style={listHeaderStyles}>
-          <span className="col-3">{new Date(element.commence_time).toDateString()}</span><span className="col-3">Spread</span><span className="col-3">Moneyline</span><span className="col-3">Over/Under</span>
-        </div>
-        <li key={index} className="list-group-item border border-start-0 border-end-0" style={listItemStyles}>
-          <div className="row" style={listDivStyles}><span className="col-3">{element.bookmakers[0].markets[0].outcomes[0].name}</span><span className="col-3">{element.bookmakers[0].markets[1].outcomes[0].point}</span><span className="col-3">{element.bookmakers[0].markets[0].outcomes[0].price}</span><span className="col-3">{element.bookmakers[0].markets[2].outcomes[0].point}</span></div> 
-          <div className="row" style={listDivStyles}><span className="col-3">{element.bookmakers[0].markets[0].outcomes[1].name}</span><span className="col-3">{element.bookmakers[0].markets[1].outcomes[1].point}</span><span className="col-3">{element.bookmakers[0].markets[0].outcomes[1].price}</span><span className="col-3">{element.bookmakers[0].markets[2].outcomes[1].point}</span></div>
-        </li>
-      </div>
-      ):(
-      <div>
-        <div className="row container" style={listHeaderStyles}>
-            <span className="col-3">{new Date(element.commence_time).toDateString()}</span><span className="col-3">Spread</span><span className="col-3">Moneyline</span><span className="col-3">Over/Under</span>
-          </div>
-        <li key={index} className="list-group-item border border-start-0 border-end-0" style={listItemStyles}>
-          <div className="row" style={listDivStyles}><span className="col-3">{element.bookmakers[0].markets[0].outcomes[1].name}</span><span className="col-3">{element.bookmakers[0].markets[1].outcomes[1].point}</span><span className="col-3">{element.bookmakers[0].markets[0].outcomes[1].price}</span><span className="col-3">{element.bookmakers[0].markets[2].outcomes[1].point}</span></div> 
-          <div className="row" style={listDivStyles}><span className="col-3">{element.bookmakers[0].markets[0].outcomes[0].name}</span><span className="col-3">{element.bookmakers[0].markets[1].outcomes[0].point}</span><span className="col-3">{element.bookmakers[0].markets[0].outcomes[0].price}</span><span className="col-3">{element.bookmakers[0].markets[2].outcomes[0].point}</span></div>
-        </li>
-      </div>
+    <table className="table">
+      <thead>
+        <tr>
+          <th className="">{new Date(element.commence_time).toDateString()}</th>
+          <th className="">Spread</th>
+          <th className="">Moneyline</th>
+          <th className="">Over/Under</th>
+        </tr>
+      </thead>
+      <tbody key={index} className="" >
+        <tr><td className="col-3">{element.bookmakers[0].markets[0].outcomes[0].name}</td><td className="col-3">{element.bookmakers[0].markets[1].outcomes[0].point}</td><td className="col-3">{element.bookmakers[0].markets[0].outcomes[0].price}</td><td className="col-3 ">{element.bookmakers[0].markets[2].outcomes[0].point}</td></tr>
+        <tr><td className="col-3">{element.bookmakers[0].markets[0].outcomes[1].name}</td><td className="col-3">{element.bookmakers[0].markets[1].outcomes[1].point}</td><td className="col-3">{element.bookmakers[0].markets[0].outcomes[1].price}</td><td className="col-3">{element.bookmakers[0].markets[2].outcomes[1].point}</td></tr>
+      </tbody>
+    </table>
+  ):(
+    <table className="table">
+      <thead>
+        <tr>
+          <th className="">{new Date(element.commence_time).toDateString()}</th>
+          <th className="">Spread</th>
+          <th className="">Moneyline</th>
+          <th className="">Over/Under</th>
+        </tr>
+      </thead>
+      <tbody key={index} className="" >
+        <tr><td className="col-3">{element.bookmakers[0].markets[0].outcomes[0].name}</td><td className="col-3">{element.bookmakers[0].markets[1].outcomes[0].point}</td><td className="col-3">{element.bookmakers[0].markets[0].outcomes[0].price}</td><td className="col-3 ">{element.bookmakers[0].markets[2].outcomes[0].point}</td></tr>
+        <tr><td className="col-3">{element.bookmakers[0].markets[0].outcomes[1].name}</td><td className="col-3">{element.bookmakers[0].markets[1].outcomes[1].point}</td><td className="col-3">{element.bookmakers[0].markets[0].outcomes[1].price}</td><td className="col-3">{element.bookmakers[0].markets[2].outcomes[1].point}</td></tr>
+      </tbody>
+    </table>
   )})
   
 
@@ -87,9 +97,9 @@ function Odds() {
             </div>
           </div>
           <div>
-            <ul className="list-group list-group-flush">
+            {/* <ul className="list-group list-group-flush"> */}
               {result}
-            </ul>
+            {/* </ul> */}
           </div>
         </div>
       </React.Fragment>
