@@ -32,11 +32,9 @@ function MainPageControl() {
               <LeaderBoard />
             </div>
             <div>
-              {/* <NFL /> */}
             </div>
           </div>
         </div> 
-    
           </div>
       </React.Fragment>
       )
