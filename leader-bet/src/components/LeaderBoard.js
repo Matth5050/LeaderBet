@@ -34,20 +34,20 @@ function LeaderBoard() {
 
   return (
     <React.Fragment>
-    <div className="card">
-      <div className="card-header">
+    <div className="card text-bg-dark">
+      <div className="card-header ">
         Leader Board
       </div>
       <ol className="list-group list-group-flush">
         {mainAccountsList.map(({userName, win}, i) => { 
           if (i === 0) {
             return (
-              <li className='list-group-item crowned leaderBoard leaderBoard d-flex justify-content-between align-items-start'>{userName}
+              <li className='list-group-item list-group-item-dark crowned leaderBoard leaderBoard d-flex justify-content-between align-items-start'>{userName}
               <span class="badge bg-primary rounded-pill">{win}</span></li>)
           } else
           return (
             <React.Fragment>
-          <li className='list-group-item leaderBoard d-flex justify-content-between align-items-start'><div>{userName}</div>
+          <li className='list-group-item list-group-item-dark leaderBoard d-flex justify-content-between align-items-start'><div>{userName}</div>
           <span class="badge bg-primary rounded-pill">{win}</span></li>
           
           </React.Fragment>
