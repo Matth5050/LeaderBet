@@ -1,19 +1,25 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { BetContext } from './UserContext.js';
-import { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { BetContext, UserContext } from './UserContext.js';
+import { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import  { db, auth } from './../firebase.js';
-import firebase from "./../firebase.js";
-
 
 function BetSlip() {
 
   const [mainBetList, setMainBetsList ] = useState([]);
+  const [winCount, setWinCount ] = useState(null);
+  const [lossCount, setLossCount ] = useState(null);
   const {mainScoresList, setMainScoresList} = useContext(BetContext);
+  const { userName, setUserName } = useContext(UserContext);
 
-
-
-
-  useEffect(() => {
+  const winLoss = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
+  getDoc(winLoss)
+    .then((doc) => {
+      setWinCount(doc.data().win);
+      setLossCount(doc.data().loss);
+    })
+ 
+  //gets bets from bets db
+  useEffect(() => { 
     const unSubscribe = onSnapshot(
       collection(db, "bets"),
       (collectionSnapshot) => {
@@ -35,17 +41,18 @@ function BetSlip() {
     return () => unSubscribe();
   }, []);
 
+  // determines if players bets won/lost
   useEffect(() => {
     mainBetList.forEach(function(element) {
       mainScoresList.forEach(function(item) {
         if (element.betId === item.id) {
           if (item.completed === true) {
             if (item.scores[0].score < item.scores[1].score && item.scores[1].name === element.team) {
-              const countRef = doc(db, "accounts", element.email);
+              // const countRef = doc(db, "accounts", element.email);
               //need account ID
-              updateDoc(countRef, {
-                win: firebase.firestore.FieldValue.increment(10)
-              });
+              // updateDoc(countRef, {
+              //   win: firebase.firestore.FieldValue.increment(10)
+              // });
 
             } else if (item.scores[0].score > item.scores[1].score && item.scores[0].name === element.team) {
               console.log(item.scores[0].name);
