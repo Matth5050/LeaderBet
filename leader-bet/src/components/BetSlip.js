@@ -54,20 +54,29 @@ function BetSlip() {
         if (element.betId === item.id) {
           if (item.completed === true) {
             if (item.scores[0].score < item.scores[1].score && item.scores[1].name === element.team) {
-              // increment();
               setWinCount(winCount + 1);
-              console.log("here");
-              console.log(winCount);
               const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
 
               updateDoc(countRef, {
                 win: winCount
               });
-
+              
             } else if (item.scores[0].score > item.scores[1].score && item.scores[0].name === element.team) {
-              console.log(item.scores[0].name);
+                setWinCount(winCount + 1);
+                const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
+                
+                updateDoc(countRef, {
+                  win: winCount
+                });
+
             } else {
-              console.log("loser");
+                console.log("loser");
+                setWinCount(winCount - 1);
+                  const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
+                  
+                  updateDoc(countRef, {
+                    win: winCount
+                });
             }
           }
         } 
