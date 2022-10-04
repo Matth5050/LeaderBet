@@ -6,17 +6,19 @@ import  { db, auth } from './../firebase.js';
 function BetSlip() {
 
   const [mainBetList, setMainBetsList ] = useState([]);
-  const [winCount, setWinCount ] = useState(null);
+ 
   const [lossCount, setLossCount ] = useState(null);
   const {mainScoresList, setMainScoresList} = useContext(BetContext);
   const { userName, setUserName } = useContext(UserContext);
 
   const winLoss = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
-  getDoc(winLoss)
-    .then((doc) => {
-      setWinCount(doc.data().win);
-      setLossCount(doc.data().loss);
-    })
+  
+  // const wStorage = getDoc(winLoss)
+  //   .then((doc) => {
+  //     setWinCount(doc.data().win);
+  //   })
+
+    const [winCount, setWinCount ] = useState(null);
  
   //gets bets from bets db
   useEffect(() => { 
@@ -41,6 +43,10 @@ function BetSlip() {
     return () => unSubscribe();
   }, []);
 
+  // function increment() {
+    
+  // }
+
   // determines if players bets won/lost
   useEffect(() => {
     mainBetList.forEach(function(element) {
@@ -48,11 +54,15 @@ function BetSlip() {
         if (element.betId === item.id) {
           if (item.completed === true) {
             if (item.scores[0].score < item.scores[1].score && item.scores[1].name === element.team) {
-              // const countRef = doc(db, "accounts", element.email);
-              //need account ID
-              // updateDoc(countRef, {
-              //   win: firebase.firestore.FieldValue.increment(10)
-              // });
+              // increment();
+              setWinCount(winCount + 1);
+              console.log("here");
+              console.log(winCount);
+              const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
+
+              updateDoc(countRef, {
+                win: winCount
+              });
 
             } else if (item.scores[0].score > item.scores[1].score && item.scores[0].name === element.team) {
               console.log(item.scores[0].name);
