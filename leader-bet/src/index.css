@@ -22,10 +22,10 @@ code {
 
 /* leaderboard */
 
-/* .lBoard {
+.lBoard {
   position: sticky;
-  top: 0;
-} */
+  top: 2%;
+}
 
 .leaderBoard.list-group {
   counter-reset: line-number;
@@ -34,6 +34,8 @@ code {
 .leaderBoard.list-group-item {
   counter-increment: line-number;
   text-indent: 24px;
+  color:white;
+  background-color: rgb(33, 37, 41);
 }
 
 .leaderBoard.list-group-item:after {
@@ -57,8 +59,16 @@ code {
 text-indent: 0;
 }
 
+table td:hover {
+  background-color: rgba(75, 250, 72);
+}
+
 /* end leaderboard code */
 
+.scrollable{
+  overflow-y: auto;
+  max-height: 300px;
+}
 
 
 
