@@ -21,8 +21,7 @@ function LeaderBoard() {
             id: doc.id
           });
         });
-        const valuesAsceSorted = Object.values(accounts).sort(function(a,b){return b.win - a.win}).slice(0,10);
-        console.log(valuesAsceSorted);
+        const valuesAsceSorted = Object.values(accounts).sort(function(a,b){return b.win - a.win}).slice(0,5);
         setMainAccountsList(valuesAsceSorted);
       },
       (error) => {
