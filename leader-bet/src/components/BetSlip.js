@@ -13,11 +13,7 @@ function BetSlip() {
 
   const winLoss = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
   
-  // const wStorage = getDoc(winLoss)
-  //   .then((doc) => {
-  //     setWinCount(doc.data().win);
-  //   })
-
+ 
     const [winCount, setWinCount ] = useState(null);
  
   //gets bets from bets db
@@ -31,10 +27,12 @@ function BetSlip() {
             team: doc.data().team,
             bet: doc.data().bet,
             betId: doc.data().betId,
+            id: doc.data().id,
             email: doc.data().email
           });
         });
         setMainBetsList(bets);
+        console.log(mainBetList);
       },
       (error) => {
         console.log("error with the betslip!")
@@ -43,9 +41,6 @@ function BetSlip() {
     return () => unSubscribe();
   }, []);
 
-  // function increment() {
-    
-  // }
 
   // determines if players bets won/lost
   useEffect(() => {
@@ -56,26 +51,45 @@ function BetSlip() {
             if (item.scores[0].score < item.scores[1].score && item.scores[1].name === element.team) {
               setWinCount(winCount + 1);
               const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
-
+              const idCont = element.id;
+              const betRef = doc(db, "bets", idCont);
+              console.log(idCont);
               updateDoc(countRef, {
                 win: winCount
               });
-              
+
+              deleteDoc(betRef)
+                  .then(() => {
+                      console.log("Entire Document has been deleted successfully.")
+                  })
+                  .catch(error => {
+                      console.log(error);
+                  })
+
             } else if (item.scores[0].score > item.scores[1].score && item.scores[0].name === element.team) {
                 setWinCount(winCount + 1);
                 const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
+                const betRef = doc(db, "bets", "iD77TDUyUT8RyVerpHCw");
                 
                 updateDoc(countRef, {
                   win: winCount
                 });
 
+                deleteDoc(betRef)
+                  .then(() => {
+                      console.log("Entire Document has been deleted successfully.")
+                  })
+                  .catch(error => {
+                      console.log(error);
+                  })
+
             } else {
                 console.log("loser");
-                setWinCount(winCount - 1);
+                setWinCount(lossCount + 1);
                   const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
                   
                   updateDoc(countRef, {
-                    win: winCount
+                    loss: lossCount
                 });
             }
           }
