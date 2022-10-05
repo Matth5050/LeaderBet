@@ -10,11 +10,19 @@ function BetSlip() {
   const { mainScoresList, setMainScoresList } = useContext(BetContext);
   const { userName, setUserName } = useContext(UserContext);
   const [ winCount, setWinCount ] = useState(null);
-
   const docRef = doc(db, "accounts", userName);
-  getDoc(docRef).then((doc) => {
-    // setWinCount(doc.data().win);
-  })
+
+  useEffect(() => {
+    const unSubscribe = onSnapshot(
+      doc(db, "accounts", userName),
+      getDoc(docRef).then((doc) => {
+        setWinCount(doc.data().win);
+      },(error) => {
+        console.log("error with the betslip!")
+      }, 
+  ));
+  return () => unSubscribe();
+  }, [])
 
  
   //gets bets from bets db
