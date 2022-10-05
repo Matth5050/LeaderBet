@@ -5,16 +5,17 @@ import  { db, auth } from './../firebase.js';
 
 function BetSlip() {
 
-  const [mainBetList, setMainBetsList ] = useState([]);
- 
-  const [lossCount, setLossCount ] = useState(null);
-  const {mainScoresList, setMainScoresList} = useContext(BetContext);
+  const [ mainBetList, setMainBetsList ] = useState([]);
+  const [ lossCount, setLossCount ] = useState(null);
+  const { mainScoresList, setMainScoresList } = useContext(BetContext);
   const { userName, setUserName } = useContext(UserContext);
+  const [ winCount, setWinCount ] = useState(null);
 
-  const winLoss = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
-  
- 
-    const [winCount, setWinCount ] = useState(null);
+  const docRef = doc(db, "accounts", userName);
+  getDoc(docRef).then((doc) => {
+    // setWinCount(doc.data().win);
+  })
+
  
   //gets bets from bets db
   useEffect(() => { 
@@ -32,7 +33,6 @@ function BetSlip() {
           });
         });
         setMainBetsList(bets);
-        console.log(mainBetList);
       },
       (error) => {
         console.log("error with the betslip!")
@@ -40,7 +40,6 @@ function BetSlip() {
     );
     return () => unSubscribe();
   }, []);
-
 
   // determines if players bets won/lost
   useEffect(() => {
@@ -50,10 +49,10 @@ function BetSlip() {
           if (item.completed === true) {
             if (item.scores[0].score < item.scores[1].score && item.scores[1].name === element.team) {
               setWinCount(winCount + 1);
-              const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
-              const idCont = element.id;
+              const idCont = element.betId;
+              const countRef = doc(db, "accounts", userName);
               const betRef = doc(db, "bets", idCont);
-              console.log(idCont);
+
               updateDoc(countRef, {
                 win: winCount
               });
@@ -68,8 +67,9 @@ function BetSlip() {
 
             } else if (item.scores[0].score > item.scores[1].score && item.scores[0].name === element.team) {
                 setWinCount(winCount + 1);
-                const countRef = doc(db, "accounts", "5uuw2GOpvVWC9y8BztMb");
-                const betRef = doc(db, "bets", "iD77TDUyUT8RyVerpHCw");
+                const idCont = element.betId;
+                const countRef = doc(db, "accounts", userName);
+                const betRef = doc(db, "bets", idCont);
                 
                 updateDoc(countRef, {
                   win: winCount
