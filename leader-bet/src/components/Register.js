@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import  { db } from './../firebase.js';
-import  {collection, addDoc } from 'firebase/firestore';
+import  {collection, addDoc, setDoc, doc } from 'firebase/firestore';
 import { v4 } from 'uuid';
 import { auth } from "./../firebase.js";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,7 +21,7 @@ function Register() {
   const [signUpSuccess, setSignUpSuccess] = useState(null);
 
   function onNewAccountCreation(email, userName){
-    addDoc(collection(db,'accounts'),{
+    setDoc(doc(db,'accounts', email),{
       email:email,
       userName: userName,
       win: 0,
