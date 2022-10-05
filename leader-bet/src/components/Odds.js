@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
-import  {collection, addDoc } from 'firebase/firestore';
+import  {collection, addDoc, setDoc, doc } from 'firebase/firestore';
 import  { db } from './../firebase.js';
 import { v4 } from 'uuid';
 
@@ -13,7 +13,7 @@ function Odds() {
   const oddsArr = test; //dummy data
 
   function placeBet(team, bet, betId) {
-    addDoc(collection(db,'bets'),{
+    setDoc(doc(db,'bets', betId),{
       email: userName,
       team: team,
       bet: bet,
