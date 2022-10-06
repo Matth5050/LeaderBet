@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap');
 
 
 
@@ -20,6 +21,10 @@ code {
 /* .bg {
   min-height:calc(100% - 70px);
 } */
+
+.oddsTitle {
+  font-family: 'Chakra Petch', sans-serif;
+}
 
 /* leaderboard */
 
@@ -60,11 +65,59 @@ code {
 text-indent: 0;
 }
 
-table td:hover {
-  background-color: rgba(75, 250, 72);
+/* table td {
+  transition:.7s;
+} */
+table th {
+  font-family: 'Chakra Petch', sans-serif;
 }
 
+table td {
+  position: relative;
+  background-color: #04AA6D;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+table td:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+table td:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+ table td:hover {
+  background-color: rgb(66, 209, 64, 1);
+  
+} 
+
 /* end leaderboard code */
+
+.login-card {
+  background-color: rgb(33, 37, 41);
+  color: #FFD700;
+}
+
+.card-header {
+  padding-left: 7px;
+}
 
 .scrollable{
   overflow-y: auto;
@@ -75,6 +128,58 @@ a {
   text-decoration: none;
 }
 
+.brand {
+  color: #FFD700;
+  font-family: 'Chakra Petch', sans-serif;
+  transition: 500ms;
+}
+
+.brand:hover {
+  color:#42D140
+}
+
+.dropdown {
+  color: #FFD700;
+  font-family: 'Chakra Petch', sans-serif;
+  transition: 500ms;
+}
+
+
+.dropdown:hover {
+  color:#42D140;
+}
+
+.border-success {
+  border-color:#42D140;
+}
+
+.sports {
+  color:#42D140;
+  border-color:#42D140;
+  border: 1px solid;
+  width:200px;
+  transition: 500ms;
+}
+
+.sports:hover {
+  color: #FFD700;
+  border: 1px solid #FFD700;
+  width:200px;
+}
+
+.badge {
+  color:#FFD700;
+}
+
+.badge-outline {
+  color: #FFD700;
+  border: 1px solid #42D140;
+  background-color: transparent;
+}
+
+.color-style {
+  color: #FFD700;
+}
 
 
 
