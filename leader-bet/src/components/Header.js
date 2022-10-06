@@ -6,10 +6,6 @@ import { signOut } from "firebase/auth";
 
 function Header() {
 
-  const links = {
-    color: "#FFD700"
-  }
-
   const [signOutSuccess, setSignOutSuccess] = useState(null);
   const { userName, setUserName } = useContext(UserContext);
   const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
@@ -29,7 +25,7 @@ function Header() {
       <React.Fragment>
       <nav className="navbar" >
         <div className="container-fluid">
-          <span className="navbar-brand mb-0 h1"><Link to="/" style={links}>LeaderBet</Link></span>
+          <span className="navbar-brand mb-0 h1"><Link to="/" className="brand"><em>Leader</em>Bet</Link></span>
           <div>
             <span className=""><Link to="/login"><button className="btn btn-outline-primary">Login</button></Link></span>
             <span className="mx-3"><Link to="/register"><button className="btn btn-outline-primary">Register</button></Link></span>
@@ -43,7 +39,7 @@ function Header() {
       <React.Fragment>
         <nav className="navbar navbar-expand-lg ">
           <div className="container-fluid">
-          <span className="navbar-brand mb-0 h1"><Link to="/" style={links}>LeaderBet</Link></span>
+          <span className="navbar-brand mb-0 h1"><Link to="/" className="brand"><em>Leader</em>Bet</Link></span>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -51,7 +47,7 @@ function Header() {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle mx-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a className="nav-link dropdown-toggle mx-3 dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {userName}
                   </a>
                   <ul className="dropdown-menu">
