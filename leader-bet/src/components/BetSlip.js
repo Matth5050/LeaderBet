@@ -5,10 +5,20 @@ import  { db, auth } from './../firebase.js';
 
 function BetSlip() {
 
+  const cardStyle = {
+    boxShadow: "0px 0px 4px rgba(66, 209, 64, 1)"
+  }
+
+  const titleStyle = {
+    color: "#FFD700",
+    fontFamily: "'Chakra Petch', sans-serif",
+  }
+
   const [ mainBetList, setMainBetsList ] = useState([]);
   const [ lossCount, setLossCount ] = useState(null);
   const { mainScoresList, setMainScoresList } = useContext(BetContext);
   const { userName, setUserName } = useContext(UserContext);
+  const { scuff, setScuff } = useContext(UserContext);
   const [ winCount, setWinCount ] = useState(null);
   const docRef = doc(db, "accounts", userName);
 
@@ -16,7 +26,10 @@ function BetSlip() {
     const unSubscribe = onSnapshot(
       doc(db, "accounts", userName),
       getDoc(docRef).then((doc) => {
-        setWinCount(doc.data().win);
+        const test = doc.data().win;
+        console.log(test);
+        setWinCount(test);
+        console.log(winCount)
       },(error) => {
         console.log("error with the betslip!")
       }, 
@@ -24,7 +37,7 @@ function BetSlip() {
   return () => unSubscribe();
   }, [])
 
- 
+ console.log(winCount);
   //gets bets from bets db
   useEffect(() => { 
     const unSubscribe = onSnapshot(
@@ -49,21 +62,30 @@ function BetSlip() {
     return () => unSubscribe();
   }, []);
 
+  
+
   // determines if players bets won/lost
   useEffect(() => {
-    mainBetList.forEach(function(element) {
+      mainBetList.forEach(function(element) {
       mainScoresList.forEach(function(item) {
         if (element.betId === item.id) {
           if (item.completed === true) {
             if (item.scores[0].score < item.scores[1].score && item.scores[1].name === element.team) {
-              setWinCount(winCount + 1);
+              console.log(winCount);
               const idCont = element.betId;
               const countRef = doc(db, "accounts", userName);
               const betRef = doc(db, "bets", idCont);
-
-              updateDoc(countRef, {
-                win: winCount
-              });
+              //mop
+              const stateUpdate = async() => {
+                const test = (winCount + 1);
+                await setWinCount(test);
+                console.log(test);
+                await updateDoc(countRef, {
+                  win: test
+                });
+              };
+              stateUpdate();
+              
 
               deleteDoc(betRef)
                   .then(() => {
@@ -75,6 +97,7 @@ function BetSlip() {
 
             } else if (item.scores[0].score > item.scores[1].score && item.scores[0].name === element.team) {
                 setWinCount(winCount + 1);
+                console.log(winCount);
                 const idCont = element.betId;
                 const countRef = doc(db, "accounts", userName);
                 const betRef = doc(db, "bets", idCont);
@@ -108,17 +131,24 @@ function BetSlip() {
 
 
 
+
   const betsList = mainBetList.map((element,index) => {
     return (
-      <p>{element.team} {element.bet}</p>
+      <React.Fragment>
+        <table className='table table-dark'>
+          <tbody key={index}>
+            <tr className='border-success'><td>{element.team} {element.bet}</td></tr>
+          </tbody>
+        </table>
+      </React.Fragment>
     )
   })
   
   return (
     <React.Fragment>
-      <div class="card mt-1 text-bg-dark">
-        <h5 class="card-header">Open Bets</h5>
-        <div className="card-body">
+      <div class="card mt-3 text-bg-dark" style={cardStyle}>
+        <h5 class="card-header" style={titleStyle}>Open Bets</h5>
+        <div className="">
             {betsList}
         </div>
       </div>
