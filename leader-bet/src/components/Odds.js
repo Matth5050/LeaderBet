@@ -6,6 +6,14 @@ import { v4 } from 'uuid';
 
 function Odds() {
 
+  const titleStyle = {
+    color: "#FFD700",
+    fontFamily:"Chakra+Petch"
+  }
+
+  const cardStyle = {
+    boxShadow: "0px 0px 4px rgb(66, 209, 64, 1)"
+  }
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,7 +28,6 @@ function Odds() {
       betId: betId,
       id: v4()
     })
-    console.log("success");
   }
 
   const result = oddsArr.map((element, index) => {
@@ -28,10 +35,10 @@ function Odds() {
     <table className="table table-dark">
       <thead>
         <tr>
-          <th className="">{new Date(element.commence_time).toDateString()}</th>
-          <th className="">Spread</th>
-          <th className="">Moneyline</th>
-          <th className="">Over/Under</th>
+          <th className="border-success">{new Date(element.commence_time).toDateString()}</th>
+          <th className="border-success">Spread</th>
+          <th className="border-success">Moneyline</th>
+          <th className="border-success">Over/Under</th>
         </tr>
       </thead>
       <tbody key={index} className="" >
@@ -53,10 +60,10 @@ function Odds() {
     <table className="table table-dark ">
       <thead>
         <tr>
-          <th className="">{new Date(element.commence_time).toDateString()}</th>
-          <th className="">Spread</th>
-          <th className="">Moneyline</th>
-          <th className="">Over/Under</th>
+          <th className="border-success">{new Date(element.commence_time).toDateString()}</th>
+          <th className="border-success">Spread</th>
+          <th className="border-success">Moneyline</th>
+          <th className="border-success">Over/Under</th>
         </tr>
       </thead>
       <tbody key={index} className="" >
@@ -104,19 +111,19 @@ function Odds() {
   //   } else {
       return (
         <React.Fragment>
-        <div className="card text-bg-dark">
-          <div className="card-header text-center">
-            <h1>Odds</h1>
+        <div className="card text-bg-dark oddsCard" style={cardStyle}>
+          <div className="card-header text-center" style={titleStyle}>
+            <h1 className="oddsTitle">Odds</h1>
           </div>
           <div className="d-flex justify-content-around mt-5 mb-4">
             <div>
-              <button className="sports btn btn-outline-primary">NFL</button>
+              <p className="sports text-center">NFL</p>
             </div>
             <div>
-              <button className="sports btn btn-outline-primary">MLB</button>
+              <p className="sports text-center">EPL</p>
             </div>
             <div>
-              <button className="sports btn btn-outline-primary">NHL</button>
+              <p className="sports text-center">NHL</p>
             </div>
           </div>
           <div>
