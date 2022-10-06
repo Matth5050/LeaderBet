@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 
-
-
 function Login() {
 
   const cardWidth = {
     width: "18rem",
-    marginTop: "250px"
+    marginTop: "250px",
   }
   
   const [signInSuccess, setSignInSuccess] = useState(null);
@@ -41,7 +39,7 @@ function Login() {
       <Header />
       {signInSuccess}
       <div>
-        <div className="card text-center mx-auto p-3" style={cardWidth}>
+        <div className="card text-center mx-auto p-3 login-card" style={cardWidth}>
           <div className="">
             <h3 className="mb-3 card-title">Login</h3>
             <form className="form" onSubmit={doSignIn}>
@@ -64,11 +62,11 @@ function Login() {
                   placeholder="password"></input>
                   <p className="small">forgot password?</p>
                 </div>
-                <button type="submit" className="btn btn-outline-primary">Login</button>
+                <button type="submit" className="sports btn">Login</button>
               </form>
           </div>
         </div>
-        <p className="text-center mt-3">New to LeaderBet? <Link to="/register">Register an account here!</Link></p>
+        <p className="text-center mt-3 color-style">New to LeaderBet? <Link to="/register">Register an account here!</Link></p>
       </div>
     </React.Fragment>
   );
