@@ -9,10 +9,6 @@ import Header from "./Header.js";
 
 function Register() {
 
-
-  // const navigate =useNavigate();
-  // const toHome = useCallback(() => navigate('/login', {replace:true}, [navigate]));
-
   const cardWidth = {
     width: "18rem",
     marginTop: "250px"
