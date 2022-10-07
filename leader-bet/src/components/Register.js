@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import  { db } from './../firebase.js';
-import  {collection, addDoc, setDoc, doc } from 'firebase/firestore';
+import  { setDoc, doc } from 'firebase/firestore';
 import { v4 } from 'uuid';
 import { auth } from "./../firebase.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Header from "./Header.js";
 
@@ -53,7 +53,7 @@ function Register() {
       <div>
       {signUpSuccess}
         <div className="card text-center mx-auto p-3" style={cardWidth}>
-          <div className="">
+          <div>
             <h3 className="mb-3 card-title">Register</h3>
             <form className="form" onSubmit={doSignUp}>
                 <div className="mb-3">
