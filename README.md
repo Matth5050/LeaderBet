@@ -32,7 +32,7 @@
 
 * This app uses [the-odds-api](https://the-odds-api.com/)
 * To make an account, go to their site and follow the instructions to receive your API key
-* Store your api key in the .env file like this "ODDS_API_KEY={your api key here}"
+* Store your api key in the .env file like this "REACT_APP_API_KEY={your api key here}"
 
 ## Known Bugs
 
