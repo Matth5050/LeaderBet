@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from './UserContext.js';
-import  { db, auth } from './../firebase.js';
-import { collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import  { db } from './../firebase.js';
+import { collection, onSnapshot } from 'firebase/firestore';
 
 function LeaderBoard() {
 
@@ -14,8 +14,6 @@ function LeaderBoard() {
     boxShadow: "0px 0px 4px rgba(66, 209, 64, 1)"
   }
 
-  const { scuff, setScuff } = useContext(UserContext);
-  const { userName, setUserName } = useContext(UserContext);
   const [mainAccountsList, setMainAccountsList ] = useState([]);
 
   useEffect(() => {
@@ -37,7 +35,7 @@ function LeaderBoard() {
         setMainAccountsList(valuesAsceSorted);
       },
       (error) => {
-
+        console.log(error);
       }
     );
     return () => unSubscribe();
@@ -64,9 +62,7 @@ function LeaderBoard() {
         )})}
       </ol>
     </div>
-
   </React.Fragment>
-
   );
 }
 
