@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import Odds from "./Odds"
 import LeaderBoard from "./LeaderBoard";
-import { Link } from "react-router-dom";
 import { auth } from './../firebase.js'
 import Header from "./Header";
 import Footer from "./Footer"
 import BetSlip from "./BetSlip"
-
-
-
+import Scores from "./Scores";
 
 function MainPageControl() {
 
@@ -35,6 +32,7 @@ function MainPageControl() {
                   <div className="lBoard">
                     <LeaderBoard />
                     <BetSlip /> 
+                    <Scores />
                   </div>
                 </div>
               </div>
