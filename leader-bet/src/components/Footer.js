@@ -3,12 +3,12 @@ import React from "react";
 function Footer() {
   
   const footerStyle = {
-   marginTop: "10px"
+    marginTop: "10px"
   }
 
   const textStyle = {
     color: "grey"
-   }
+  }
 
   return (
     <React.Fragment>
