@@ -8,9 +8,7 @@ function Header() {
 
   const [signOutSuccess, setSignOutSuccess] = useState(null);
   const { userName, setUserName } = useContext(UserContext);
-  const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
-  const parseObject = JSON.parse(grabObject);
- 
+
   function doSignOut() {
     signOut(auth)
       .then(function() {
@@ -27,7 +25,7 @@ function Header() {
         <div className="container-fluid">
           <span className="navbar-brand mb-0 h1"><Link to="/" className="brand"><em>Leader</em>Bet</Link></span>
           <div>
-            <span className=""><Link to="/login"><button className="btn btn-outline-primary">Login</button></Link></span>
+            <span><Link to="/login"><button className="btn btn-outline-primary">Login</button></Link></span>
             <span className="mx-3"><Link to="/register"><button className="btn btn-outline-primary">Register</button></Link></span>
           </div>
         </div>
