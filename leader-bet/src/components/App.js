@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth } from "./../firebase.js";
 import MainPageControl from './MainPageControl';
-import Header from './Header';
 import Login from './Login';
 import Register from './Register';
 import PrivateRoute from './PrivateRoute.js';
@@ -15,8 +14,6 @@ function App() {
 const [isLogged, setIsLogged] = useState(false);
 const [userName, setUserName] = useState(null);
 const [mainScoresList, setMainScoresList] = useState(nums);
-
-// const { userName, setUserName } = useContext(UserContext);
 const grabObject = window.sessionStorage.getItem(sessionStorage.key(auth.currentUser));
 const parseObject = JSON.parse(grabObject);
 
@@ -56,7 +53,7 @@ const nums = [
       "sport_key": "americanfootball_nfl",
       "sport_title": "NFL",
       "commence_time": "2022-10-02T13:28:40Z",
-      "completed": false,
+      "completed": true,
       "home_team": "New Orleans Saints",
       "away_team": "Minnesota Vikings",
       "scores": [
