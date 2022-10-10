@@ -4,7 +4,7 @@
 
 #### An app that allows users to place bets on thier favorite teams and compete with others!
 
-## Technologies Used
+## Technologies used
 
 * React
 * Html
@@ -18,26 +18,75 @@
 
 ## Setup/Installation
 
-* Copy the git repository url
-* Open a shell program & navigate to your machine's desktop
-* Clone the repository using the copied URL and the "git clone" command
-* In the shell program, navigate to the root directory of the newly created file called "leader-bet"
-* Next, run the "npm install" command to install dependencies
-* Install firebase with "npm install firebase"
-* On the [firebase](https://firebase.google.com/) website, login in with your gmail account and follow the steps to create a project
-* Once you create your project be sure to add authentication and firestore database functionalites which can be found under the "build" tab on the "console" page
-* In addition, you must add your firebase config settings to a .env file in the root directory of your project, the formatting should match what is in the firebase.js file
+### Getting the repo
+
+- Clone the repo to your desktop or any directory of your choice
+
+    ```
+    git clone https://github.com/Matth5050/LeaderBet
+    ```
+- Or download as a zip file
+  - Click the green code button on the repository page
+  - At the bottom of the popup window select `Download ZIP`
+  - Extract the downloaded .zip folder
+
+### Installing dependencies
+
+- Make sure you have [Node.js](https://nodejs.org/en/download/) installed
+- Open bash terminal in the top level of this directory
+- Run `npm install` to install dependencies
+
+### Adding Firebase config
+
+- This project does not include the firebase API information you need, you must create your own in order to use this app locally
+
+  - Sign up for [Firebase](https://firebase.google.com/)
+  - In your firebase console add a project
+    - Navigate to the project and register a web app
+    - Get your web app's Firebase configuration
+      ```
+      const firebaseConfig = {
+        apiKey: <Your apiKey>,
+        authDomain: <Your authDomain>,
+        projectId: <Your projectId>,
+        storageBucket: <Your storageBucket>,
+        messagingSenderId: <Your messagingSenderId>,
+        appId: <Your appId>
+      };
+      ```
+    - Add following lines to .env with your firebaseConfig
+      ```
+      REACT_APP_FIREBASE_API_KEY = <Your apiKey>,
+      REACT_APP_FIREBASE_AUTH_DOMAIN = <Your authDomain>
+      REACT_APP_FIREBASE_PROJECT_ID = <Your projectId>
+      REACT_APP_FIREBASE_STORAGE_BUCKET = <Your storageBucket>
+      REACT_APP_FIREBASE_MESSAGING_SENDER_ID = <Your messagingSenderId>
+      REACT_APP_FIREBASE_APP_ID = <Your appId>
+      ```
+  - In the project on the left hand panel add Authentication
+    - Select Sign-in method and add Email/Password
+  - In the project on the left hand panel add Firestore Database
+
+### API setup
+* This app uses [the-odds-api](https://the-odds-api.com/)
+* Creat a .env file in the root directory
+* To make an account, go to their site and follow the instructions to receive your API key
+* Store your api key in the .env file like this "REACT_APP_API_KEY={your api key here}"
+* Add your odds-api key to the .env
+
+    ```
+    REACT_APP_API_KEY=<Your api key>
+    ```
+
+### Final steps
 * Now in the root directory type "npm run start" to start the program
 * If the web page does not open on it's own, open a web browser and plug "http://localhost:3000/" into the URL bar
 
-* This app uses [the-odds-api](https://the-odds-api.com/)
-* To make an account, go to their site and follow the instructions to receive your API key
-* Store your api key in the .env file like this "REACT_APP_API_KEY={your api key here}"
-
-## Known Bugs
+## Known bugs
 
 * On register, user will not be immediatley redirected to main page, please click the button in the top left corner of the navbar
 * Currently only moneyline bets for NFL games are supported
+* Currently working to implement correct API usage for scores
 
 ## License
 
